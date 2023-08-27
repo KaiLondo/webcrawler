@@ -2,6 +2,11 @@
 # Edit at https://www.toptal.com/developers/gitignore?templates=Node
 
 ### Node ###
+
+#Folders
+node_modules/
+node/
+
 # Logs
 logs
 *.log
