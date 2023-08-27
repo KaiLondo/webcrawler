@@ -5,7 +5,9 @@
 
 #Folders
 node_modules/
-node/
+
+# Files
+*.bak
 
 # Logs
 logs
