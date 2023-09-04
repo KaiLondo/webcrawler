@@ -10,3 +10,4 @@ function testNormalizeUrl (input, expected) {
 testNormalizeUrl('http://example.com/', 'example.com')
 testNormalizeUrl("https://blog.boot.dev/path/", 'blog.boot.dev/path')
 testNormalizeUrl('https://developer.mozilla.org/en-US/blog/', 'developer.mozilla.org/en-US/blog')
+testNormalizeUrl("https://www.twitch.tv/thePrimeagen/about/", "twitch.tv/thePrimeagen/about")

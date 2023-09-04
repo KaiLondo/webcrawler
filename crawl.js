@@ -13,3 +13,13 @@ function normalizeURL(url) {
     return normalUrl
 }
 
+function getURLsFromHTML (){
+  return 
+}
+
+
+
+
+
+
+
