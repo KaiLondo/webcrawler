@@ -1,3 +1,6 @@
+// Description: Crawl a website and return a list of all the pages on the site.
+// Author: Lamin Bojang
+
 const { JSDOM } = require('jsdom')
 
 module.exports =  {
@@ -8,23 +11,12 @@ module.exports =  {
 
 function normalizeURL(url) {
     urlObject = new URL(url)
-    // const host = urlObject.hostname
-    // const path = urlObject.pathname
+
     const hosturl = urlObject.hostname.replace(/(www\.)?/, '')
     const pathUrl = urlObject.pathname.replace(/\/?$/, '')
     const normalUrl = `${hosturl}${pathUrl}`
     return normalUrl
 }
-
-// const htmlBody = `
-// <html>
-//     <body>
-//         <a href="https://blog.boot.dev"><span>Go to Boot.dev</span></a>
-//         <a href="/about"><span>About Boot.dev</span></a>
-//         <a href="/contact"><span>Contact Boot.dev</span></a>
-//     </body>
-// </html>
-// `
 
 function getURLsFromHTML(urlString, baseURL) {
     const urls = [];
@@ -45,29 +37,6 @@ function getURLsFromHTML(urlString, baseURL) {
     }
     return urls;
 }
-
-// async function crawlPage2(baseURL) {
-//     try {
-//       const response = await fetch(baseURL);
-  
-//       if (!response.ok) {
-//         throw new Error(`HTTP error! status: ${response.status}`);
-//       }
-  
-//       const contentType = response.headers.get('Content-Type');
-  
-//       if (!contentType || !contentType.includes('text/html')) {
-//         throw new Error(`Not a HTML page! ${contentType}`);
-//       }
-  
-//       const text = await response.text();
-//       console.log(text);
-  
-//     } catch (error) {
-//       console.error('There was a problem:', error);
-//       return null;
-//     }
-//   }
 
 async function crawlPage(baseURL, currentUrl, pages) {
     
@@ -108,9 +77,7 @@ async function crawlPage(baseURL, currentUrl, pages) {
         return pages;
       }
       
-  
       const htmlBody = await response.text();
-    //   console.log(text);
 
     // Get all the URLs on the current page
     const urls = getURLsFromHTML(htmlBody, baseURL);
@@ -119,9 +86,6 @@ async function crawlPage(baseURL, currentUrl, pages) {
     for (const url of urls) {
         pages = await crawlPage(baseURL, url, pages);
     }
-  
-
-
     
     } catch (err) {
       console.error(`error fetching webpage: ${err.message} on ${currentUrl}`);;

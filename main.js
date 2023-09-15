@@ -1,4 +1,8 @@
 
+// Description: This is the main file of the crawler.
+// It is responsible for starting the crawling process and printing the report.
+// Author: Lamin Bojang
+
 const { crawlPage } = require('./crawl');
 const { printReport } = require('./report');
 
@@ -19,9 +23,6 @@ async function main(){
         const pages = await crawlPage(baseURL, baseURL, {});
         console.log('Crawling completed succesfully.');
 
-        // for (const [url, data] of Object.entries(pages)) {
-        //     console.log(`Found ${data.count} links to page: ${url}`);
-        // }
         printReport(pages);
 
     }
