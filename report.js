@@ -10,7 +10,10 @@ function printReport(pages) {
     // console.log(sortedPages);
     
     // Header
-    maxUrlLength = 75
+    maxUrlLength = Math.max(...sortedPages.map(page => page[0].length));
+    // maxUrlLength = 75
+    
+
     console.log(`+${'-'.repeat(maxUrlLength + 2)}+-------+`);
     console.log(`| ${'URL'.padEnd(maxUrlLength)} | Count |`);
     console.log(`+${'-'.repeat(maxUrlLength + 2)}+-------+`);
@@ -28,6 +31,7 @@ function printReport(pages) {
 
     console.log(`| ${url}${urlSpaces} | ${count}${countSpaces} |`);
   }
+  console.log(`+${'-'.repeat(maxUrlLength + 2)}+-------+`);
 };
 
 
